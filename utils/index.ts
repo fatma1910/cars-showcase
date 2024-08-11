@@ -22,17 +22,17 @@ export async function fetchCars(filters:filterProps) {
     return result;
 }
 
-export const deleteSearchParams = (type: string) => {
+// export const deleteSearchParams = (type: string) => {
 
-  const newSearchParams = new URLSearchParams(window.location.search);
+//   const newSearchParams = new URLSearchParams(window.location.search);
 
 
-  newSearchParams.delete(type.toLocaleLowerCase());
+//   newSearchParams.delete(type.toLocaleLowerCase());
 
-  const newPathname = `${window.location.pathname}?${newSearchParams.toString()}`;
+//   const newPathname = `${window.location.pathname}?${newSearchParams.toString()}`;
 
-  return newPathname;
-};
+//   return newPathname;
+// };
 
 export const calculateCarRent = (city_mpg: number, year: number) => {
     const basePricePerDay = 50; // Base rental price per day in dollars
