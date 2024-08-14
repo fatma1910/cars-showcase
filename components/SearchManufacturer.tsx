@@ -1,7 +1,7 @@
 'use client';
 
 import { SearchManufacturerProps } from '@/types'
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import { Combobox, ComboboxInput, ComboboxOption, ComboboxOptions,ComboboxButton ,Transition} from '@headlessui/react'
 import Image from 'next/image';
 import { manufacturers } from '@/constant';
@@ -10,15 +10,27 @@ import { manufacturers } from '@/constant';
 const SearchManufacturer = ({manufacturer,setManufacturer}:SearchManufacturerProps) => {
     const [query, setquery] = useState('');
 
-    const filteredManufacturers = query === ""? 
-    manufacturers : manufacturers.filter((item) => {return item.toLowerCase().replace(/\s+/g,"").includes(query.toLowerCase().replace(/\s+/g,""))})
+    useEffect(() => {
 
+        setquery(query.trim());
+      }, [query]);
 
+    const filteredManufacturers =
+    query === ""
+      ? manufacturers
+      : manufacturers.filter((item) =>
+          item
+            .toLowerCase()
+            .replace(/\s+/g, "")
+            .includes(query.toLowerCase().replace(/\s+/g, ""))
+        );
 
   return (
     <div className='search-manufacturer'>
-        <Combobox value={manufacturer} 
-                onChange={setManufacturer}>
+        <Combobox 
+            value={manufacturer} 
+            onChange={setManufacturer}
+        >
             <div className='relative w-full '>
                 <ComboboxButton className='absolute top-[14px] ml-2' 
                 >
@@ -29,7 +41,7 @@ const SearchManufacturer = ({manufacturer,setManufacturer}:SearchManufacturerPro
                 alt='Car Logo'
                 />
                 </ComboboxButton>
-                <ComboboxInput className="search-manufacturer__input" placeholder='Volkswagen' displayValue={(manufacturer:string) => manufacturer} 
+                <ComboboxInput className="search-manufacturer__input" placeholder='Volkswagen' displayValue={(item:string) => item} 
                 onChange={(e) => setquery(e.target.value) }
                 />
                 <Transition 

@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { CarCard, CustomFilter, Hero, SearchBar, ShowMore } from "@/components";
 import { fetchCars } from "@/utils";
-import { fuels, manufacturers, yearsOfProduction } from "@/constant";
+import { fuels , yearsOfProduction } from "@/constant";
 import { HomeProps } from "@/types";
 
 export default function Home({ searchParams }: HomeProps) {
