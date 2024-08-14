@@ -11,8 +11,10 @@ export interface CustomButtonProp {
 }
 
 export interface SearchManufacturerProps {
-    manufacturer:string;
-    setManufacturer:(manufacturer:string) => void;
+    manufacturer?:string;
+    setManufacturer?:(manufacturer:string) => void;
+    selected?: string;
+    setSelected?: (e:any)=> void ;
 }
 
 export interface CarProps {
@@ -32,7 +34,7 @@ export interface CarProps {
 
 export type CarState = CarProps[] & { message?: string };
 export interface filterProps {
-    manufacturers: string; 
+    manufacturer: string; 
     year: number; 
     limit: number; 
     fuel: string; 
@@ -45,10 +47,12 @@ export interface OptionProps {
 export interface CustomFilterProps {
     title: string;
     options: OptionProps[];
+    setFilter: (e:any)=>void ;
 }
 export interface ShowMoreProps {
     pageNumber:number;
     isNext: boolean;
+    setLimit: (e:number)=> void ;
 }
 
 export interface FilterProps {
